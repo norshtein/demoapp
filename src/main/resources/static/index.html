@@ -3,22 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-<h1>CosmosDB Disaster recovery demo page</h1>
+<h1>CosmosDB Disaster recovery demo page</h1><br>
 <div id="data">
 
 </div>
 <div id="form">
+    <h2>Append new user:</h2>
     <form action="/user" method="post">
         ID:<br>
         <input type="text" name="id"><br>
         First name:<br>
-        <input type="text" name="firstname"><br>
+        <input type="text" name="firstName"><br>
         Last name:<br>
-        <input type="text" name="lastname"><br>
+        <input type="text" name="lastName"><br>
         <input type="submit" value="Submit">
     </form>
 </div>
+
+<script>
+    $.get("/user", function(data, status){
+        var res = JSON.parse(data);
+        var resString = "";
+        for(var i = 0;i < res.length;i++){
+            resString += "User id: ";
+            resString += res[i].id;
+            resString += "<br>";
+            resString += "First name: ";
+            resString += res[i].firstName;
+            resString += "<br>";
+            resString += "Last name: ";
+            resString += res[i].lastName;
+            resString += "<br><br>";
+        }
+        $("div#data").html("<h2>Current Users:</h2><br>" + resString);
+    });
+
+</script>
 </body>
 </html>

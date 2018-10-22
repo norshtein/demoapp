@@ -38,4 +38,8 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+    public String toString(){
+        return String.format("User id: %s, first name: %s, last name: %s\n", this.id, this.firstName, this.lastName);
+    }
 }
