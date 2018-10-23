@@ -1,0 +1,7 @@
+---
+applications:
+  - name: primaryApp
+    buildpack: java_buildpack
+    path: target/test2-1.0-SNAPSHOT.jar
+    services:
+      - sqlaccount
